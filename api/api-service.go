@@ -8,7 +8,19 @@ import (
 	"net/http"
 )
 
-func fetchPatients() ([]entity.Patient, error) {
+type ApiService interface {
+	FetchPatients() ([]entity.Patient, error)
+}
+
+type apiService struct {
+	response entity.Response
+}
+
+func New() ApiService {
+	return &apiService{}
+}
+
+func (service *apiService) FetchPatients() ([]entity.Patient, error) {
 	// URL of the public API
 	url := "https://static.wongnai.com/devinterview/covid-cases.json"
 
@@ -32,7 +44,7 @@ func fetchPatients() ([]entity.Patient, error) {
 
 	// Parse the JSON response
 	var response entity.Response
-	if err := json.Unmarshal(body, &response); err != nil {
+	if err := json.Unmarshal(body, response); err != nil {
 		return nil, fmt.Errorf("error parsing JSON: %v", err)
 	}
 
