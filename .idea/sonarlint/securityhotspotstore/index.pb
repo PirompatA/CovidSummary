@@ -22,3 +22,5 @@ M
 controller/data-controller.go,6/0/6024da3483ac472bc8e1cf3aebde0ba2ed8d0d79
 C
 client/fetchData.go,0/b/0bb33d2fc3765cd2f07cd830408d660973970b90
+B
+entity/Response.go,f/9/f904c37504997de511448282a0897442c5ede8cb
